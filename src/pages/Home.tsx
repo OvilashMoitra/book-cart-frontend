@@ -3,7 +3,7 @@ import NavigationBar from '../components/NavigationBar/NavigationBar'
 
 const Home = () => {
   return (
-    <div>
+    <div className='w-[90vw] mx-auto'>
       <NavigationBar />
       <Footer/>
     </div>
