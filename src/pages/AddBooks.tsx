@@ -17,7 +17,7 @@ export type IAddBookResponse = {
 const AddBooks = () => {
   const navigate = useNavigate();
   const [addBooks] = useAddBooksMutation()
-  console.log(addBooks);
+
   const {
     register,
     handleSubmit,
@@ -29,7 +29,8 @@ const AddBooks = () => {
 
   const onSubmit: SubmitHandler<IAddBookResponse > = async(data) => {
     console.log(data)
-    const token=localStorage.getItem('token')
+    const token = localStorage.getItem('token')
+    console.log(token);
     await addBooks({ data,token:token! })
     toast.success('book added')
     navigate('/books')
@@ -40,7 +41,7 @@ const AddBooks = () => {
         <form onSubmit={handleSubmit(onSubmit)}  className='md:w-[550px] w-[90vw] rounded-2xl p-10 mx-auto border-black border-solid border-2'>
           <input className='block bg-slate-200 w-full p-5 rounded-lg m-3' type="name" {...register("name", { required: true })} placeholder='book name'/>
           <input className='block bg-slate-200 w-full p-5 rounded-lg m-3' type="date" {...register("publicationYear", { required: true })} placeholder='publication year'/>
-          <input className='block bg-slate-200 w-full p-5 rounded-lg m-3' type="text"  {...register("addedBy", { required: true })} placeholder='added by'/>
+          {/* <input className='block bg-slate-200 w-full p-5 rounded-lg m-3' type="text"  {...register("addedBy", { required: true })} placeholder='added by'/> */}
           <input className='block bg-slate-200 w-full p-5 rounded-lg m-3' type="text" id=""  {...register("genre", { required: true })}  placeholder='genre'/>
           <input className='block bg-slate-200 w-full p-5 rounded-lg m-3' type="url"  {...register("imageUrl", { required: true })} placeholder='book image url'/>
           <input className='block bg-slate-200 w-full p-5 rounded-lg m-3' type="text"  {...register("author", { required: true })} placeholder='book author'/>
