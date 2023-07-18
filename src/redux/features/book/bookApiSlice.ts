@@ -32,6 +32,13 @@ const bookApiSlice = bookCartApi.injectEndpoints({
                 method: "GET",
             })
         }),
+        editBook: builder.mutation({
+            query: ({ data, id }) => ({
+                url: `/book/${id}`,
+                method: "PUT",
+                body: data
+            })
+        }),
         deleteBook: builder.mutation({
             query: (id) => ({
                 url: `/book/${id}`,
@@ -42,4 +49,4 @@ const bookApiSlice = bookCartApi.injectEndpoints({
     }),
 })
 
-export const { useAddBooksMutation, useGetAllBooksQuery, useGetSingleBookQuery, useDeleteBookMutation } = bookApiSlice
+export const { useAddBooksMutation, useGetAllBooksQuery, useGetSingleBookQuery, useDeleteBookMutation, useEditBookMutation } = bookApiSlice

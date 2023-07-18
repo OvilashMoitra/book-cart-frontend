@@ -2,7 +2,7 @@ import React from 'react'
 import NavigationBar from '../components/NavigationBar/NavigationBar'
 import Footer from '../components/Footer/Footer'
 import { useDeleteBookMutation, useGetSingleBookQuery } from '../redux/features/book/bookApiSlice'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useGetUserInfoQuery } from '../redux/features/user/userApiSlice'
 import swal from 'sweetalert'
 
@@ -15,7 +15,7 @@ const navigate=useNavigate()
   const [deleteBook]=useDeleteBookMutation()
   if (isLoading || userLoading) <p>loading......</p>
   
-  const handleBookDelete = async(bookId) => {
+  const handleBookDelete = async(bookId:string) => {
     const willDelete = await swal({
       title: "Are you sure?",
       text: "Are you sure that you want to delete this book?",
@@ -41,8 +41,10 @@ navigate('/books')
           <h2 className="card-title">Name: {book?.name}</h2>
         <p>Author: {book?.data.author}</p>
             <p>Genre: {book?.data.genre}</p>
-            {userInfo?.data?._id===book?.data.addedBy?<div className='my-4 flex justify-end'>
-              <button className='btn  btn-warning'>Edit Book</button>
+            {userInfo?.data?._id === book?.data.addedBy ? <div className='my-4 flex justify-end'>
+            <Link to={`/editBook/${book?.data?._id}`}>
+                <button className='btn  btn-warning'>Edit Book</button>
+                </Link>
               <button onClick={()=> handleBookDelete(book?.data?._id)}  className='btn btn-error'>Delete book</button>
             </div>:null}
             
