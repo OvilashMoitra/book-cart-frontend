@@ -22,10 +22,16 @@ console.log(userInfo);
           <div className='border-2 border-black border-solid p-20 rounded-3xl'>
           <h2 className="card-title">Name: {book?.name}</h2>
         <p>Author: {book?.data.author}</p>
-        <p>Genre: {book?.data.genre}</p>
+            <p>Genre: {book?.data.genre}</p>
+            {userInfo?.data?._id===book?.addedBy?<div>
+              <button>Edit Book</button>
+              <button>Delete book</button>
+            </div>:null}
+            
         </div>
         </div>
       </div>
+      
       <Footer/>
     </div>
   )
