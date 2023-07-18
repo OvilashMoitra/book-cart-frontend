@@ -14,6 +14,8 @@ const bookApiSlice = bookCartApi.injectEndpoints({
                 body: payload.data,
                 headers: { "authorization": payload.token }
             }),
+            invalidatesTags: ['books']
+
         }),
         getAllBooks: builder.query<IAllBookResponse, undefined>({
             query: (param) => ({
@@ -21,7 +23,8 @@ const bookApiSlice = bookCartApi.injectEndpoints({
                 // method: "GET",
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                 params: param
-            })
+            }),
+            providesTags: ['books']
         }),
         getSingleBook: builder.query({
             query: (id) => ({
