@@ -30,7 +30,7 @@ const Login = () => {
   useEffect(() => {
     const isTokenExist=localStorage.getItem('token')
     if (isTokenExist) { 
-      // navigate('/')
+      navigate('/')
     } 
   }, [navigate])
   
