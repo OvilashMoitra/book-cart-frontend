@@ -1,6 +1,14 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const NavigationBar = () => {
+  
+const navigate=useNavigate()
+  const handleSingout = () => {
+    // const token = localStorage.getItem("token")
+    localStorage.removeItem('token')
+    navigate('/login')
+  }
+
   return (
     <div className="navbar bg-base-300 rounded-2xl p-3">
     <div className="flex-1">
@@ -24,21 +32,9 @@ const NavigationBar = () => {
           </div>
         </div>
       </div>
-      <div className="dropdown dropdown-end">
-        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-          <div className="w-10 rounded-full">
-            <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-          </div>
-        </label>
-        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-          <li>
-            <a className="justify-between">
-              Profile
-              <span className="badge">New</span>
-            </a>
-          </li>
-          <li><a>Settings</a></li>
-          <li><a>Logout</a></li>
+      <div className="navbar-center">
+        <ul tabIndex={0} className=" mt-3 z-[1] p-5  rounded-box">
+          <button onClick={handleSingout} className="btn btn-xs">Logout</button>
         </ul>
       </div>
     </div>
