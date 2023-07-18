@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { useSignupUserMutation } from '../redux/features/user/userApiSlice'
+import { useLoginUserMutation, useSignupUserMutation } from '../redux/features/user/userApiSlice'
 import { Navigate, redirect, useNavigate } from "react-router-dom";
 
 type IUserInputs = {
@@ -16,6 +16,7 @@ type ISignupResponse={
 
 
 const Login = () => {
+  const [token,setToken]=useState<string>('')
   const navigate = useNavigate();
   const {
     register,
@@ -23,25 +24,26 @@ const Login = () => {
     watch,
     formState: { errors },
   } = useForm<IUserInputs>()
-  const [Signup, { isLoading }] = useSignupUserMutation()
+  const [login, { isLoading }] = useLoginUserMutation()
   
   if (isLoading) <p>Loading...</p>
 
   useEffect(() => {
     const isTokenExist=localStorage.getItem('token')
-    if (isTokenExist) { 
+    if (isTokenExist || token) { 
       navigate('/')
     } 
-  }, [navigate])
+  }, [navigate,token])
   
   
 
   const onSubmit: SubmitHandler<IUserInputs> = async(data) => {
     try {
-      const user =await Signup(data) as {data:ISignupResponse}
+      const user =await login(data) as {data:ISignupResponse}
       localStorage.setItem("token", user.data.token)
+      setToken(user.data.token)
     } catch (error) {
-      console.log("error from signup page",error)
+      console.log("error from login page",error)
     }
 
   }

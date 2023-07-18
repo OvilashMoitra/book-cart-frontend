@@ -11,6 +11,13 @@ const userApiSlice = bookCartApi.injectEndpoints({
                 body: userCredential
             }),
         }),
+        loginUser: build.mutation({
+            query: (userCredential: IUser) => ({
+                url: "/user/login",
+                method: "POST",
+                body: userCredential
+            }),
+        }),
         getUserInfo: build.query({
             query: (token: string) => ({
                 url: "/user/",
@@ -22,4 +29,4 @@ const userApiSlice = bookCartApi.injectEndpoints({
     overrideExisting: false,
 })
 
-export const { useSignupUserMutation, useGetUserInfoQuery } = userApiSlice
+export const { useSignupUserMutation, useGetUserInfoQuery, useLoginUserMutation } = userApiSlice
