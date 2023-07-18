@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useSignupUserMutation } from '../redux/features/user/userApiSlice'
 import { useNavigate } from "react-router-dom";
@@ -14,6 +14,7 @@ type ISignupResponse={
 }
 
 const Signup = () => {
+  const [token,setToken]=useState<string>('')
   const navigate = useNavigate();
   const {
     register,
@@ -27,16 +28,16 @@ const Signup = () => {
 
   useEffect(() => {
     const isTokenExist=localStorage.getItem('token')
-    if (isTokenExist) { 
+    if (isTokenExist || token) { 
       navigate('/')
     } 
-  }, [navigate])
+  }, [navigate,token])
 
   const onSubmit: SubmitHandler<IUserInputs> = async(data) => {
     try {
       const user =await Signup(data) as {data:ISignupResponse}
       localStorage.setItem("token", user.data.token)
-
+      setToken(user.data.token)
     } catch (error) {
       console.log("error from login page",error)
     }
