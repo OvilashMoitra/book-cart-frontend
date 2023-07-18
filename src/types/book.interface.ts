@@ -6,6 +6,6 @@ export type IBook = {
     "genre": string,
     "publicationYear": number
     "author": string,
-    "Creation time"?: string
-    "Updated time"?: string
+    "createdAt"?: string
+    "UpdatedAt"?: string
 }
