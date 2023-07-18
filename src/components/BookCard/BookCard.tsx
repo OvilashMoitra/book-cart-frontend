@@ -1,13 +1,21 @@
+import { Link } from "react-router-dom";
+import { IAddBookResponse } from "../../pages/AddBooks"
+import { IBook } from "../../types/book.interface"
 
-const BookCard = () => {
+const BookCard = ({book}: { book: IBook }) => {
+  console.log(book.name);
   return (
     <div className="card w-96 glass">
-  <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="car!"/></figure>
+  <figure><img src={book.imageUrl} alt="car!"/></figure>
   <div className="card-body">
-    <h2 className="card-title">Life hack</h2>
-    <p>How to park your car at your garage?</p>
-    <div className="card-actions justify-end">
-      <button className="btn btn-primary">Learn now!</button>
+        <h2 className="card-title">Name: {book?.name}</h2>
+        <p>Author: {book.author}</p>
+        <p>Genre: {book.genre}</p>
+        <div className="card-actions justify-end">
+          <button className="btn btn-primary">Wishlist</button>
+          <Link to={`/book/${book._id}`}>
+            <button className="btn btn-primary">Read more!</button>
+            </Link>
     </div>
   </div>
 </div>

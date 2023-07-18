@@ -1,4 +1,5 @@
 import { IAddBookResponse } from "../../../pages/AddBooks";
+import { IAllBookResponse } from "../../../pages/AllBooks";
 import { IBook } from "../../../types/book.interface";
 import { bookCartApi } from "../../api/apiSlice";
 
@@ -14,15 +15,21 @@ const bookApiSlice = bookCartApi.injectEndpoints({
                 headers: { "authorization": payload.token }
             }),
         }),
-        getAllBooks: builder.query<IBook[], undefined>({
+        getAllBooks: builder.query<IAllBookResponse, undefined>({
             query: (param) => ({
                 url: "/book",
                 // method: "GET",
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                 params: param
             })
-        })
+        }),
+        getSingleBook: builder.query({
+            query: (id) => ({
+                url: `/book/${id}`,
+                method: "GET",
+            })
+        }),
     }),
 })
 
-export const { useAddBooksMutation, useGetAllBooksQuery } = bookApiSlice
+export const { useAddBooksMutation, useGetAllBooksQuery, useGetSingleBookQuery } = bookApiSlice

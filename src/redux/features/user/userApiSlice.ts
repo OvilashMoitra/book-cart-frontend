@@ -11,8 +11,15 @@ const userApiSlice = bookCartApi.injectEndpoints({
                 body: userCredential
             }),
         }),
+        getUserInfo: build.query({
+            query: (token: string) => ({
+                url: "/user/",
+                method: "GET",
+                headers: { "authorization": token }
+            }),
+        }),
     }),
     overrideExisting: false,
 })
 
-export const { useSignupUserMutation } = userApiSlice
+export const { useSignupUserMutation, useGetUserInfoQuery } = userApiSlice
