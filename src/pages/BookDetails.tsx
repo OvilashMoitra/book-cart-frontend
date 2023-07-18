@@ -12,7 +12,7 @@ const BookDetails = () => {
   const { data: book, isLoading } = useGetSingleBookQuery(id)
   const {data:userInfo,isLoading:userLoading}=useGetUserInfoQuery(token!)
   if(isLoading || userLoading)<p>loading......</p>
-console.log(userInfo);
+
   return (
     <div>
       <NavigationBar />
@@ -23,9 +23,9 @@ console.log(userInfo);
           <h2 className="card-title">Name: {book?.name}</h2>
         <p>Author: {book?.data.author}</p>
             <p>Genre: {book?.data.genre}</p>
-            {userInfo?.data?._id===book?.addedBy?<div>
-              <button>Edit Book</button>
-              <button>Delete book</button>
+            {userInfo?.data?._id===book?.data.addedBy?<div className='my-4 flex justify-end'>
+              <button className='btn  btn-warning'>Edit Book</button>
+              <button className='btn btn-error'>Delete book</button>
             </div>:null}
             
         </div>
