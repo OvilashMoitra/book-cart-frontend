@@ -5,6 +5,7 @@ import BookCard from '../components/BookCard/BookCard'
 import { IBook } from '../types/book.interface'
 import BookFilter from '../components/BookFilter/BookFilter'
 import { useAppSelector } from '../redux/hook'
+import { BeatLoader } from 'react-spinners'
 
 
 
@@ -16,12 +17,12 @@ const AllBooks = () => {
   const { genre, year } = useAppSelector(state => state.bookFilter)
   const { data, isLoading, } = useGetAllBooksQuery(undefined)
 
-
-  if (isLoading) <p>loading...</p>
-
-  data?.data?.filter(book => console.log(book?.publicationYear === year))
+  // data?.data?.filter(book => console.log(book?.publicationYear === year))
 
   let allBooks;
+  if (isLoading) {
+    allBooks=<BeatLoader color="#36d7b7" />
+  }
   if (genre !== null && year === null) {
     allBooks = <div className='flex flex-wrap gap-10 my-10 w-[70%] mx-auto justify-center '>
       {data?.data?.filter(book => book.genre === genre).map((book) => <BookCard book={book} />)}
