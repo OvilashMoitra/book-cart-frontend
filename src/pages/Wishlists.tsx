@@ -1,9 +1,9 @@
-import BookCard from "../components/BookCard/BookCard"
 import Footer from "../components/Footer/Footer"
 import NavigationBar from "../components/NavigationBar/NavigationBar"
 import { useGetUserInfoQuery } from "../redux/features/user/userApiSlice"
 import { IWishListPayload, useRemoveFromWishlistMutation, useSingleUserWishlistQuery } from "../redux/features/wishlist/wishlistApiSlice"
 import { IBook } from "../types/book.interface"
+
 
 const Wishlists = () => {
     const token = localStorage.getItem('token')
@@ -36,7 +36,7 @@ const Wishlists = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {wishlists?.data?.map(({ bookId, userId }) => <tr>
+                        {wishlists?.data?.map(({ bookId }:{bookId:IBook}) => <tr>
                             <td>
                                 {bookId?.name}
                             </td>

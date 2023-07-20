@@ -1,4 +1,3 @@
-import { IAddBookResponse } from '../../../pages/AddBooks';
 import { bookCartApi } from './../../api/apiSlice';
 
 export type IWishListPayload = {

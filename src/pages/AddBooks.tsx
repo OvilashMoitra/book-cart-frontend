@@ -3,16 +3,12 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useAddBooksMutation } from '../redux/features/book/bookApiSlice';
 import toast from 'react-hot-toast';
-import moment from 'moment';
-import DatePicker from 'react-date-picker';
 import { useState } from 'react';
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import NavigationBar from '../components/NavigationBar/NavigationBar';
 import Footer from '../components/Footer/Footer';
-type ValuePiece = Date | null;
 
-type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 
 export type IAddBookResponse = {
@@ -57,7 +53,7 @@ const AddBooks = () => {
             <p>publication year</p>
             <DatePicker onChange={onChange} value={value} />
           </div> */}
-          <input className='block bg-slate-200 w-full p-5 rounded-lg m-3' type="text"  {...register("addedBy", { required: true })} placeholder='added by' />
+          {/* <input className='block bg-slate-200 w-full p-5 rounded-lg m-3' type="text"  {...register("addedBy", { required: true })} placeholder='added by' /> */}
           <input className='block bg-slate-200 w-full p-5 rounded-lg m-3' type="text" id=""  {...register("genre", { required: true })}  placeholder='genre'/>
           <input className='block bg-slate-200 w-full p-5 rounded-lg m-3' type="url"  {...register("imageUrl", { required: true })} placeholder='book image url'/>
           <input className='block bg-slate-200 w-full p-5 rounded-lg m-3' type="text"  {...register("author", { required: true })} placeholder='book author'/>

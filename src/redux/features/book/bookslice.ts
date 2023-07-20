@@ -1,6 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { IBook } from '../../../types/book.interface'
-
 export interface IBookFilter {
     year: number | null,
     genre: string | null

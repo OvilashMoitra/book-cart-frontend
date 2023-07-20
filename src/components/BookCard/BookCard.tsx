@@ -4,7 +4,6 @@ import { useGetUserInfoQuery } from "../../redux/features/user/userApiSlice";
 import { useAddToWishlistMutation, useRemoveFromWishlistMutation, useSingleUserWishlistQuery } from "../../redux/features/wishlist/wishlistApiSlice";
 import { useEffect, useState } from "react";
 import { FiBookmark } from 'react-icons/fi'
-import { IUser } from "../../types/user.interface";
 const BookCard = ({ book }: { book: IBook }) => {
   const [allWishlistBooks, setAllWishlistBooks] = useState<string[]>([])
   const token = localStorage.getItem('token')
@@ -13,11 +12,12 @@ const BookCard = ({ book }: { book: IBook }) => {
   const { data: userInfo } = useGetUserInfoQuery(token!)
   const { data: userWishList, isSuccess: wishListFetchSuccuess } = useSingleUserWishlistQuery(userInfo?.data?._id)
 
+  
 
   useEffect(() => {
     if (wishListFetchSuccuess) {
       console.log(userWishList)
-      const wishListBooksId: string[] = userWishList.data.map(({ bookId, userId }) => bookId?._id)
+      const wishListBooksId: string[] = userWishList?.data?.map(({ bookId }:{bookId:IBook}) => bookId?._id)
       setAllWishlistBooks(wishListBooksId)
     }
   }, [wishListFetchSuccuess,userWishList])
