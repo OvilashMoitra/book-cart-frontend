@@ -36,12 +36,12 @@ const BookCard = ({ book }: { book: IBook }) => {
 
   return (
     <div className="card w-96 glass">
-  <figure><img src={book.imageUrl} alt="car!"/></figure>
+  <figure><img className="h-[350px]" src={book.imageUrl} alt="car!"/></figure>
   <div className="card-body">
         <div className="flex justify-between">
           <div>
             <h2 className="card-title">Name: {book?.name}</h2>
-            <p> id :{book?._id}</p>
+            {/* <p> id :{book?._id}</p> */}
             <p>Author: {book.author}</p>
             <p>Genre: {book.genre}</p>
             <div className="card-actions justify-end">
