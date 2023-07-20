@@ -18,6 +18,7 @@ const navigate=useNavigate()
     <div className="navbar-center">
         <Link to={'/books'} className="btn btn-ghost normal-case text-xl">All Books</Link>
         <Link to={'/wishlists'} className="btn btn-ghost normal-case text-xl">My wishlist</Link>
+        <Link to={'/addBooks'} className="btn btn-ghost normal-case text-xl">Add Books</Link>
     </div>
     <div className="flex-none">
       <div className="dropdown dropdown-end">
@@ -27,15 +28,6 @@ const navigate=useNavigate()
             <span className="badge badge-sm indicator-item">8</span>
           </div>
         </label>
-        <div tabIndex={0} className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow">
-          <div className="card-body">
-            <span className="font-bold text-lg">8 Items</span>
-            <span className="text-info">Subtotal: $999</span>
-            <div className="card-actions">
-              <button className="btn btn-primary btn-block">View cart</button>
-            </div>
-          </div>
-        </div>
       </div>
         <div className="navbar-center">
         <ul tabIndex={0} className=" mt-3 z-[1] p-5  rounded-box">
