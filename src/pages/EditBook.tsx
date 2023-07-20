@@ -18,24 +18,19 @@ const EditBook = () => {
   const navigate = useNavigate();
   const {id}=useParams()
   const [editBooks] = useEditBookMutation()
-  const { data: book, isLoading } = useGetSingleBookQuery(id)
+  const { data: book } = useGetSingleBookQuery(id)
 
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors },
   } = useForm<IAddBookResponse >()
 
 
 
   const onSubmit: SubmitHandler<IAddBookResponse > = async(data) => {
-    console.log("book edit",data)
-    const token = localStorage.getItem('token')
-    // console.log(token);
     await editBooks({ data,id })
-    // toast.success('book added')
-    // navigate('/books')
+    toast.success('book added')
+    navigate('/books')
   }
   return (
     <div>

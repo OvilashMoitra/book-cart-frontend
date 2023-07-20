@@ -1,4 +1,3 @@
-import React from 'react'
 import NavigationBar from '../components/NavigationBar/NavigationBar'
 import Footer from '../components/Footer/Footer'
 import { useDeleteBookMutation, useGetSingleBookQuery } from '../redux/features/book/bookApiSlice'
@@ -39,9 +38,9 @@ navigate('/books')
         <img className='w-[500px] rounded-xl p-5' src={book?.data.imageUrl} alt="" />
           <div className='border-2 border-black border-solid p-20 rounded-3xl'>
           <h2 className="card-title">Name: {book?.name}</h2>
-        <p>Author: {book?.data.author}</p>
-            <p>Genre: {book?.data.genre}</p>
-            {userInfo?.data?._id === book?.data.addedBy ? <div className='my-4 flex justify-end'>
+        <p>Author: {book?.data?.author}</p>
+            <p>Genre: {book?.data?.genre}</p>
+            {userInfo?.data?._id === book?.data?.addedBy ? <div className='my-4 flex justify-end'>
             <Link to={`/editBook/${book?.data?._id}`}>
                 <button className='btn  btn-warning'>Edit Book</button>
                 </Link>

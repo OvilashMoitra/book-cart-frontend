@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { useLoginUserMutation, useSignupUserMutation } from '../redux/features/user/userApiSlice'
-import { Navigate, redirect, useNavigate } from "react-router-dom";
+import { useLoginUserMutation } from '../redux/features/user/userApiSlice'
+import { useNavigate } from "react-router-dom";
 
 type IUserInputs = {
   email: string
@@ -21,8 +21,6 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors },
   } = useForm<IUserInputs>()
   const [login, { isLoading }] = useLoginUserMutation()
   

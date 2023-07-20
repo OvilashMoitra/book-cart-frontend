@@ -15,6 +15,10 @@ const navigate=useNavigate()
     <div className="flex-1">
       <Link to={'/'} className="btn btn-ghost normal-case text-xl">Book Cart</Link>
     </div>
+    <div className="navbar-center">
+        <Link to={'/books'} className="btn btn-ghost normal-case text-xl">All Books</Link>
+        <Link to={'/wishlists'} className="btn btn-ghost normal-case text-xl">My wishlist</Link>
+    </div>
     <div className="flex-none">
       <div className="dropdown dropdown-end">
         <label tabIndex={0} className="btn btn-ghost btn-circle">

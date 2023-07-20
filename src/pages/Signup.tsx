@@ -19,8 +19,6 @@ const Signup = () => {
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors },
   } = useForm<IUserInputs>()
   const [Signup, { isLoading }] = useSignupUserMutation()
   

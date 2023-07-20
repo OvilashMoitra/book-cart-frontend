@@ -7,7 +7,8 @@ export const bookCartApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:9000/api/v1',
     }),
-    tagTypes: ['books'],
-    endpoints: (builder) => ({}),
+    tagTypes: ['books', "wishlists"],
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    endpoints: (_builder) => ({}),
 })
 
