@@ -7,6 +7,7 @@ import AddBooks from "../pages/AddBooks";
 import BookDetails from "../pages/BookDetails";
 import EditBook from "../pages/EditBook";
 import Wishlists from "../pages/Wishlists";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 export const router = createBrowserRouter([
     {
@@ -27,7 +28,7 @@ export const router = createBrowserRouter([
     },
     {
       path: "/wishlists",
-      element: <Wishlists/>,
+      element:<ProtectedRoute> <Wishlists/></ProtectedRoute>,
     },
     {
       path: "/book/:id",
@@ -35,11 +36,11 @@ export const router = createBrowserRouter([
     },
     {
       path: "/addBooks",
-      element: <AddBooks/>,
+      element:<ProtectedRoute> <AddBooks/></ProtectedRoute>,
     },
     {
       path: "/editBook/:id",
-      element: <EditBook/>,
+      element:<ProtectedRoute> <EditBook/></ProtectedRoute>,
     },
   ]);
   
