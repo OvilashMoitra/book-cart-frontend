@@ -34,7 +34,7 @@ const Signup = () => {
   const onSubmit: SubmitHandler<IUserInputs> = async(data) => {
     try {
       const user =await Signup(data) as {data:ISignupResponse}
-      localStorage.setItem("token", user.data.token)
+      localStorage.setItem("bookcart_token", user.data.token)
       setToken(user.data.token)
     } catch (error) {
       console.log("error from login page",error)

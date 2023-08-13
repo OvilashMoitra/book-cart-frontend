@@ -6,7 +6,7 @@ const NavigationBar = () => {
   const {data,isLoading}=useGetUserInfoQuery(token!)
 const navigate=useNavigate()
   const handleSingout = () => {
-    localStorage.removeItem('token')
+    localStorage.removeItem('bookcart_token')
     navigate('/login')
   }
 
