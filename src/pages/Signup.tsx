@@ -25,7 +25,7 @@ const Signup = () => {
   if (isLoading) <p>Loading...</p>
 
   useEffect(() => {
-    const isTokenExist=localStorage.getItem('token')
+    const isTokenExist=localStorage.getItem("bookcart_token")
     if (isTokenExist || token) { 
       navigate('/')
     } 

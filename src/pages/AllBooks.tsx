@@ -15,14 +15,17 @@ export type IAllBookResponse = { message: string, code: number, data: IBook[] }
 const AllBooks = () => {
 
   const { genre, year } = useAppSelector(state => state.bookFilter)
-  const { data, isLoading, } = useGetAllBooksQuery(undefined)
+  const { data,isLoading } = useGetAllBooksQuery(undefined)
 
   // data?.data?.filter(book => console.log(book?.publicationYear === year))
-
+console.log({isLoading});
   let allBooks;
   if (isLoading) {
-    allBooks=<BeatLoader color="#36d7b7" />
-  }
+    allBooks =<div className='flex flex-wrap gap-10 my-10 w-[70%] mx-auto justify-center '>
+      <BeatLoader color="#36d7b7" />
+      <h4 className='text-2xl  font-extrabold'>Loading...</h4>
+      </div>
+  } else { 
   if (genre !== null && year === null) {
     allBooks = <div className='flex flex-wrap gap-10 my-10 w-[70%] mx-auto justify-center '>
       {data?.data?.filter(book => book.genre === genre).map((book) => <BookCard book={book} />)}
@@ -40,6 +43,7 @@ const AllBooks = () => {
       {data?.data?.map((book) => <BookCard book={book} />)}
     </div>
   }
+}
 
   return (
     <div>
