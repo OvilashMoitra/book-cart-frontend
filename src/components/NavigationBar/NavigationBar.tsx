@@ -2,8 +2,8 @@ import { Link, useNavigate } from "react-router-dom"
 import { useGetUserInfoQuery } from "../../redux/features/user/userApiSlice"
 
 const NavigationBar = () => {
-  const token = localStorage.getItem("token")
-  const {data}=useGetUserInfoQuery(token!)
+  const token = localStorage.getItem("bookcart_token")
+  const {data,isLoading}=useGetUserInfoQuery(token!)
 const navigate=useNavigate()
   const handleSingout = () => {
     localStorage.removeItem('token')
@@ -24,7 +24,7 @@ const navigate=useNavigate()
     <div className="flex-none">
         <div className="navbar-center">
         <ul tabIndex={0} className=" mt-3 z-[1] p-5  rounded-box">
-          {data?.data?.email?  <button onClick={handleSingout} className="btn btn-xs">Logout</button>:<Link to={'/login'}>Login</Link>}
+          {data?.data?.email && !isLoading?  <button onClick={handleSingout} className="btn btn-xs">Logout</button>:<Link to={'/login'}>Login</Link>}
         </ul>
       </div>
     </div>

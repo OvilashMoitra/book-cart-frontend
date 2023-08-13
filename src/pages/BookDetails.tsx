@@ -8,7 +8,7 @@ import swal from 'sweetalert'
 const BookDetails = () => {
 const navigate=useNavigate()
   const { id } = useParams()
-  const token=localStorage.getItem("token")
+  const token=localStorage.getItem("bookcart_token")
   const { data: book, isLoading } = useGetSingleBookQuery(id)
   const { data: userInfo, isLoading: userLoading } = useGetUserInfoQuery(token!)
   const [deleteBook]=useDeleteBookMutation()

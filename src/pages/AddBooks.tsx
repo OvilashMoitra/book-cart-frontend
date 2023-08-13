@@ -35,7 +35,7 @@ const AddBooks = () => {
   const onSubmit: SubmitHandler<IAddBookResponse> = async (data) => {
     const date = new Date(value)
   // data.publicationYear = Number(moment(data.publicationYear).format('YYYY'))
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('bookcart_token')
     // console.log(date.getFullYear());
     console.log({ ...data, publicationYear: date.getFullYear() });
     await addBooks({ data: { ...data, publicationYear: date.getFullYear() }, token: token! })

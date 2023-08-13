@@ -6,7 +6,7 @@ import { IBook } from "../types/book.interface"
 
 
 const Wishlists = () => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem("bookcart_token")
     const { data: userInfo } = useGetUserInfoQuery(token!)
     const { data: wishlists } = useSingleUserWishlistQuery(userInfo?.data?._id)
     const [removeFromWishList] = useRemoveFromWishlistMutation()

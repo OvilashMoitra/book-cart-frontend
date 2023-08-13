@@ -4,9 +4,10 @@ import { useGetUserInfoQuery } from "../../redux/features/user/userApiSlice";
 import { useAddToWishlistMutation, useRemoveFromWishlistMutation, useSingleUserWishlistQuery } from "../../redux/features/wishlist/wishlistApiSlice";
 import { useEffect, useState } from "react";
 import { FiBookmark } from 'react-icons/fi'
+import swal from "sweetalert";
 const BookCard = ({ book }: { book: IBook }) => {
   const [allWishlistBooks, setAllWishlistBooks] = useState<string[]>([])
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem('bookcart_token')
   const [addToWishlist] = useAddToWishlistMutation()
   const [removeFromWishlist] = useRemoveFromWishlistMutation()
   const { data: userInfo } = useGetUserInfoQuery(token!)
@@ -48,7 +49,7 @@ const BookCard = ({ book }: { book: IBook }) => {
 
               {/* <FiBookmark/> */}
               {!allWishlistBooks.includes(book?._id) ?
-                <button onClick={handleAddBook} className="btn btn-primary">Wishlist</button>
+                <button onClick={token?handleAddBook:()=>swal("Oops!", "Seems like u have not logged in yet!", "error")} className="btn btn-primary">Wishlist</button>
                 :
                 <button onClick={handleRemoveBook} className="btn btn-primary">Remove From Wishlist</button>
               }
